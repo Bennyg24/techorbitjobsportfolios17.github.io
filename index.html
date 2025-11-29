@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Developer Portfolio - Maria Harrisson</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700;900&display=swap" rel-stylesheet>
+    <style>
+        /* --- Chatbot Developer Design: Conversational, Purple/Pink, Clean --- */
+        :root {
+            --cd-primary: #9C27B0; /* Deep Purple */
+            --cd-accent: #FF4081; /* Pink/Red Accent */
+            --cd-background: #F3E5F5;
+            --cd-text: #4A148C; /* Darker Purple Text */
+            --cd-light: #E0E0E0;
+            --cd-shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.6;
+            color: var(--cd-text);
+            background: var(--cd-background);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: var(--cd-accent); transition: color 0.3s; }
+        .section { padding: 80px 0; }
+
+        /* --- Header/Profile Area --- */
+        .cd-header {
+            background: var(--cd-primary);
+            color: white;
+            padding: 40px 0;
+            border-bottom: 6px solid var(--cd-accent);
+        }
+
+        .cd-profile-area {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        
+        .cd-left-panel {
+            flex-shrink: 0;
+            width: 200px;
+            text-align: center;
+            padding-right: 30px;
+            border-right: 1px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .cd-profile-img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            border: 4px solid var(--cd-accent);
+            object-fit: cover;
+            box-shadow: 0 0 15px rgba(255, 64, 129, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .cd-contact-details {
+            font-size: 0.9em;
+            text-align: left;
+            margin-top: 15px;
+            padding-top: 15px;
+        }
+        .cd-contact-details p { margin: 5px 0; color: var(--cd-light); }
+
+        .cd-main-content { flex-grow: 1; }
+
+        #dynamicGreeting {
+            font-size: 1.3em;
+            color: var(--cd-accent);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .cd-header h1 {
+            font-size: 3em;
+            margin: 0 0 10px;
+            font-weight: 900;
+        }
+        .cd-header h2 {
+            font-size: 1.5em;
+            color: var(--cd-accent);
+            margin-bottom: 20px;
+        }
+
+        /* --- Project Grid Styles --- */
+        .cd-projects-section {
+             background: white;
+             padding-top: 0;
+             padding-bottom: 60px;
+        }
+        .cd-project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .cd-project-card {
+            background: var(--cd-card-bg);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px var(--cd-shadow);
+            overflow: hidden;
+            text-align: left;
+        }
+        .cd-project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--cd-accent);
+        }
+        .cd-project-content { padding: 20px; }
+        .cd-project-content h4 { color: var(--cd-primary); margin-top: 0; font-size: 1.4em; }
+        .cd-project-content a { font-weight: 700; color: var(--cd-accent); }
+
+
+        /* --- Skills and Competencies --- */
+        .cd-section-title {
+            font-size: 2.5em;
+            color: var(--cd-primary);
+            margin-bottom: 50px;
+        }
+        
+        .cd-skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .cd-skill-card {
+            background: white;
+            padding: 25px;
+            border-bottom: 4px solid var(--cd-accent);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        .cd-skill-card h4 { color: var(--cd-primary); margin-top: 0; }
+        .cd-skill-card p { font-size: 0.9em; }
+
+        /* --- Call to Action (CTA) --- */
+        .cd-cta-section {
+            background: var(--cd-primary);
+            padding: 70px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        }
+        .cd-cta-btn {
+            display: inline-block;
+            background: var(--cd-accent);
+            color: white;
+            padding: 16px 45px;
+            border-radius: 5px;
+            font-weight: 900;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            box-shadow: 0 5px 20px var(--cd-accent);
+            transition: all 0.3s ease;
+        }
+        .cd-cta-btn:hover { background: white; color: var(--cd-primary); transform: scale(1.05); }
+
+        @media (max-width: 768px) {
+            .cd-profile-area { flex-direction: column; text-align: center; }
+            .cd-left-panel { width: 100%; padding-right: 0; border-right: none; border-bottom: 1px dashed rgba(255, 255, 255, 0.3); padding-bottom: 20px; }
+            .cd-contact-details { text-align: center; }
+            .cd-main-content { padding-top: 20px; }
+            .cd-header h1 { font-size: 2.5em; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="cd-header">
+        <div class="container">
+            <div class="cd-profile-area">
+                <div class="cd-left-panel">
+                    <img src="https://techorbitjobs.com/wp-content/uploads/2025/10/testimonial-9.webp" alt="Maria Harrisson Profile" class="cd-profile-img">
+                    <div class="cd-contact-details">
+                        <p><strong>Location:</strong> Lagos, Nigeria</p>
+                        <p><strong>Email:</strong> maria.harrisson@example.com</p>
+                        <p><strong>LinkedIn:</strong> [Your LinkedIn URL]</p>
+                        <p><strong>GitHub:</strong> [Your GitHub URL]</p>
+                    </div>
+                </div>
+
+                <div class="cd-main-content">
+                    <div id="dynamicGreeting"></div>
+                    <h1>MARIA HARRISSON</h1>
+                    <h2>AI CHATBOT DEVELOPER | NLP EXPERT</h2>
+                    <p>
+                        I am a specialized Chatbot Developer building intelligent conversational interfaces across platforms (Web, WhatsApp, Slack). I focus on Natural Language Processing (NLP), robust dialogue management, and seamless API integration to deliver highly effective customer service and sales automation bots.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="cd-section-title">TECHNICAL SKILLS & CORE COMPETENCIES</h2>
+            <div class="cd-skills-grid">
+                <div class="cd-skill-card">
+                    <h4>NLP & Frameworks</h4>
+                    <p>Rasa, Dialogflow, Microsoft Bot Framework, NLTK, spaCy.</p>
+                </div>
+                <div class="cd-skill-card">
+                    <h4>Programming & Backend</h4>
+                    <p>Python (Advanced), Node.js, REST API integration, MongoDB/PostgreSQL.</p>
+                </div>
+                <div class="cd-skill-card">
+                    <h4>Design & Testing</h4>
+                    <p>Conversation design, intent/entity tuning, A/B testing, user journey mapping.</p>
+                </div>
+                <div class="cd-skill-card">
+                    <h4>Deployment & Hosting</h4>
+                    <p>Docker, Kubernetes, AWS/GCP (Cloud Functions/Lambda), webhook management.</p>
+                </div>
+            </div>
+
+            <h2 class="cd-section-title">FEATURED CONVERSATIONAL AI PROJECTS</h2>
+            <div class="cd-project-grid">
+                <div class="cd-project-card">
+                    <img src="[Placeholder Image URL]" alt="Rasa Chatbot Conversation Flow">
+                    <div class="cd-project-content">
+                        <h4>E-commerce Customer Service Bot (Rasa)</h4>
+                        <p>Designed a complex multi-turn bot handling order tracking, returns, and FAQs, resulting in a 40% reduction in live chat volume.</p>
+                        <a href="[Link to Demo Chat]">View Demo</a>
+                    </div>
+                </div>
+                <div class="cd-project-card">
+                    <img src="[Placeholder Image URL]" alt="Dialogflow API Integration Diagram">
+                    <div class="cd-project-content">
+                        <h4>Sales Qualification WhatsApp Bot</h4>
+                        <p>Built a sales qualification bot integrated with a CRM via webhooks, accurately scoring and routing leads 24/7.</p>
+                        <a href="[Link to Case Study]">View Case Study</a>
+                    </div>
+                </div>
+                <div class="cd-project-card">
+                    <img src="[Placeholder Image URL]" alt="NLP Intent Training Dashboard">
+                    <div class="cd-project-content">
+                        <h4>Internal IT Support Automation</h4>
+                        <p>Developed an internal bot on Slack to triage IT issues, achieving 90% accuracy in intent recognition for common tickets.</p>
+                        <a href="[Link to GitHub Repo]">View Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cd-cta-section">
+        <div class="container">
+            <h3>READY FOR A SMARTER CONVERSATIONAL BOT?</h3>
+            <a href="[Link to Contact/Booking]" class="cd-cta-btn">LET'S START THE CONVO</a>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const greetingElement = document.getElementById('dynamicGreeting');
+            const date = new Date();
+            const hour = date.getHours();
+            let greeting;
+            if (hour < 12) { greeting = 'Good morning!'; } 
+            else if (hour < 18) { greeting = 'Good afternoon!'; } 
+            else { greeting = 'Good evening!'; }
+            if (greetingElement) { greetingElement.textContent = greeting + ' Welcome to my portfolio,'; }
+        });
+    </script>
+</body>
+</html>
